@@ -1,0 +1,67 @@
+{
+  "name": "codesage-ai",
+  "displayName": "CodeSage AI - Personal Coding Tutor",
+  "description": "An elite AI coding tutor powered by OpenRouter. Teaches via WHAT → HOW → WHY → IMPROVE → EDGE CASES → FOLLOW-UP.",
+  "version": "1.0.0",
+  "publisher": "codesage",
+  "engines": { "vscode": "^1.80.0" },
+  "categories": ["Other", "Education", "Machine Learning"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      { "command": "codesage.openChat", "title": "CodeSage: Open Chat" },
+      { "command": "codesage.explain", "title": "CodeSage: Explain Selected Code" },
+      { "command": "codesage.debug", "title": "CodeSage: Debug Selected Code" },
+      { "command": "codesage.improve", "title": "CodeSage: Improve Selected Code" },
+      { "command": "codesage.setApiKey", "title": "CodeSage: Set OpenRouter API Key" }
+    ],
+    "keybindings": [
+      { "command": "codesage.openChat", "key": "ctrl+shift+a", "mac": "cmd+shift+a" }
+    ],
+    "menus": {
+      "editor/context": [
+        { "command": "codesage.explain", "group": "codesage@1", "when": "editorHasSelection" },
+        { "command": "codesage.debug", "group": "codesage@2", "when": "editorHasSelection" },
+        { "command": "codesage.improve", "group": "codesage@3", "when": "editorHasSelection" }
+      ]
+    },
+    "configuration": {
+      "title": "CodeSage AI",
+      "properties": {
+        "codesage.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Your OpenRouter API key (https://openrouter.ai/keys)"
+        },
+        "codesage.model": {
+          "type": "string",
+          "default": "google/gemini-2.0-flash-001",
+          "enum": [
+            "google/gemini-2.0-flash-001",
+            "x-ai/grok-2",
+            "openai/gpt-4o-mini",
+            "anthropic/claude-3.5-sonnet"
+          ],
+          "description": "OpenRouter model to use"
+        },
+        "codesage.expertiseLevel": {
+          "type": "string",
+          "default": "Intermediate",
+          "enum": ["Beginner", "Intermediate", "Expert"],
+          "description": "Default expertise level"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.80.0",
+    "typescript": "^5.3.0"
+  }
+}

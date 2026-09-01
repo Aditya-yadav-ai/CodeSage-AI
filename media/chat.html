@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <link rel="stylesheet" href="{{CSS}}" />
+  <title>CodeSage AI</title>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">🧙</span>
+      <div>
+        <h1>CodeSage AI</h1>
+        <p class="tagline">Your personal coding tutor</p>
+      </div>
+    </div>
+    <div class="controls">
+      <select id="expertise" title="Expertise level">
+        <option>Beginner</option>
+        <option selected>Intermediate</option>
+        <option>Expert</option>
+      </select>
+      <button id="clearBtn" title="Clear chat">🗑️</button>
+    </div>
+  </header>
+
+  <main id="messages" class="messages">
+    <div class="welcome">
+      <h2>Welcome to CodeSage 🎓</h2>
+      <p>Select code in your editor, then ask anything — or use a quick action below.</p>
+    </div>
+  </main>
+
+  <div class="quick-actions">
+    <button class="qa" data-action="Explain">💡 Explain</button>
+    <button class="qa" data-action="Debug">🐛 Debug</button>
+    <button class="qa" data-action="Improve">🚀 Improve</button>
+    <button class="qa" data-action="Summarize">📝 Summarize</button>
+  </div>
+
+  <form id="composer" class="composer">
+    <textarea id="input" rows="2" placeholder="Ask CodeSage…  (Shift+Enter for newline)"></textarea>
+    <button type="submit" id="sendBtn">Send ➤</button>
+  </form>
+
+  <script src="{{JS}}"></script>
+</body>
+</html>
